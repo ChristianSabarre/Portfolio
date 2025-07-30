@@ -1,3 +1,26 @@
+// Dark Mode Toggle
+const darkModeToggle = document.getElementById('dark-mode-toggle');
+const html = document.documentElement;
+
+// Check for saved dark mode preference or default to system preference
+const savedTheme = localStorage.getItem('theme');
+const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
+    html.classList.add('dark');
+}
+
+darkModeToggle.addEventListener('click', () => {
+    html.classList.toggle('dark');
+    
+    // Save preference
+    if (html.classList.contains('dark')) {
+        localStorage.setItem('theme', 'dark');
+    } else {
+        localStorage.setItem('theme', 'light');
+    }
+});
+
 // Mobile Menu Toggle
 const mobileMenuBtn = document.getElementById('mobile-menu-btn');
 const mobileMenu = document.getElementById('mobile-menu');
@@ -97,10 +120,9 @@ contactForm.addEventListener('submit', function(e) {
     const name = formData.get('name');
     const email = formData.get('email');
     const subject = formData.get('subject');
-    const message = formData.get('message');
     
     // Basic validation
-    if (!name || !email || !message) {
+    if (!name || !email || !subject) {
         showNotification('Please fill in all required fields.', 'error');
         return;
     }

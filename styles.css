@@ -139,12 +139,33 @@ a:focus {
     }
 }
 
-/* Dark mode support (if needed in future) */
-@media (prefers-color-scheme: dark) {
-    .auto-dark {
-        background-color: #1f2937;
-        color: #f9fafb;
-    }
+/* Dark mode support */
+.dark {
+    color-scheme: dark;
+}
+
+/* Dark mode scrollbar */
+.dark ::-webkit-scrollbar-track {
+    background: #374151;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+    background: #6366f1;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+    background: #4f46e5;
+}
+
+/* Dark mode text selection */
+.dark ::selection {
+    background-color: #6366f1;
+    color: white;
+}
+
+.dark ::-moz-selection {
+    background-color: #6366f1;
+    color: white;
 }
 
 /* Enhanced animations */
