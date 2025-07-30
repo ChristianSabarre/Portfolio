@@ -1,35 +1,57 @@
-// Dark Mode Toggle
-const darkModeToggle = document.getElementById('dark-mode-toggle');
+// Dark Mode Toggle - Initialize immediately
 const html = document.documentElement;
 
 // Check for saved dark mode preference or default to system preference
 const savedTheme = localStorage.getItem('theme');
 const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
+// Apply dark mode immediately if needed
 if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
     html.classList.add('dark');
 }
 
-darkModeToggle.addEventListener('click', () => {
-    html.classList.toggle('dark');
+// Initialize dark mode toggle when DOM is ready
+document.addEventListener('DOMContentLoaded', () => {
+    const darkModeToggle = document.getElementById('dark-mode-toggle');
     
-    // Save preference
-    if (html.classList.contains('dark')) {
-        localStorage.setItem('theme', 'dark');
+    if (darkModeToggle) {
+        console.log('Dark mode toggle found!'); // Debug line
+        
+        darkModeToggle.addEventListener('click', (e) => {
+            e.preventDefault();
+            console.log('Dark mode toggle clicked!'); // Debug line
+            
+            html.classList.toggle('dark');
+            
+            // Save preference
+            if (html.classList.contains('dark')) {
+                localStorage.setItem('theme', 'dark');
+                console.log('Switched to dark mode'); // Debug line
+            } else {
+                localStorage.setItem('theme', 'light');
+                console.log('Switched to light mode'); // Debug line
+            }
+        });
     } else {
-        localStorage.setItem('theme', 'light');
+        console.log('Dark mode toggle NOT found!'); // Debug line
     }
 });
 
-// Mobile Menu Toggle
-const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-const mobileMenu = document.getElementById('mobile-menu');
+// Mobile Menu Toggle - Wait for DOM
+document.addEventListener('DOMContentLoaded', () => {
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
 
-mobileMenuBtn.addEventListener('click', () => {
-    mobileMenu.classList.toggle('hidden');
-    const icon = mobileMenuBtn.querySelector('i');
-    icon.classList.toggle('fa-bars');
-    icon.classList.toggle('fa-times');
+    if (mobileMenuBtn && mobileMenu) {
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            const icon = mobileMenuBtn.querySelector('i');
+            if (icon) {
+                icon.classList.toggle('fa-bars');
+                icon.classList.toggle('fa-times');
+            }
+        });
+    }
 });
 
 // Smooth Scrolling for Navigation Links

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dark Mode Test</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        'primary': '#6366f1',
+                        'secondary': '#8b5cf6',
+                    }
+                }
+            }
+        }
+    </script>
+    <script>
+        // Initialize dark mode immediately
+        (function() {
+            const savedTheme = localStorage.getItem('theme');
+            const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            
+            if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
+                document.documentElement.classList.add('dark');
+            }
+        })();
+    </script>
+</head>
+<body class="bg-white dark:bg-gray-900 text-black dark:text-white transition-colors duration-300 min-h-screen p-8">
+    <div class="max-w-2xl mx-auto">
+        <h1 class="text-4xl font-bold mb-8">Dark Mode Test</h1>
+        
+        <div class="bg-gray-100 dark:bg-gray-800 p-6 rounded-lg mb-6">
+            <h2 class="text-2xl mb-4">Current Theme</h2>
+            <p id="theme-status" class="text-lg mb-4">Loading...</p>
+            
+            <button id="dark-mode-toggle" class="bg-primary hover:bg-indigo-700 text-white px-6 py-3 rounded-lg transition-colors duration-300">
+                <span class="dark:hidden">Switch to Dark Mode</span>
+                <span class="hidden dark:inline">Switch to Light Mode</span>
+            </button>
+        </div>
+        
+        <div class="grid grid-cols-2 gap-4">
+            <div class="bg-blue-100 dark:bg-blue-900 p-4 rounded">
+                <h3 class="font-bold text-blue-800 dark:text-blue-200">Light/Dark Card 1</h3>
+                <p class="text-blue-600 dark:text-blue-300">This should change colors</p>
+            </div>
+            <div class="bg-green-100 dark:bg-green-900 p-4 rounded">
+                <h3 class="font-bold text-green-800 dark:text-green-200">Light/Dark Card 2</h3>
+                <p class="text-green-600 dark:text-green-300">This should also change</p>
+            </div>
+        </div>
+        
+        <div class="mt-6 p-4 border border-gray-300 dark:border-gray-600 rounded">
+            <p class="text-gray-600 dark:text-gray-300">
+                If dark mode is working, clicking the button above should toggle between light and dark themes,
+                and the colors of all elements should change accordingly.
+            </p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const html = document.documentElement;
+            const darkModeToggle = document.getElementById('dark-mode-toggle');
+            const themeStatus = document.getElementById('theme-status');
+            
+            function updateThemeStatus() {
+                const isDark = html.classList.contains('dark');
+                themeStatus.textContent = isDark ? 'Dark Mode Active' : 'Light Mode Active';
+            }
+            
+            updateThemeStatus();
+            
+            if (darkModeToggle) {
+                darkModeToggle.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    
+                    html.classList.toggle('dark');
+                    
+                    // Save preference
+                    if (html.classList.contains('dark')) {
+                        localStorage.setItem('theme', 'dark');
+                    } else {
+                        localStorage.setItem('theme', 'light');
+                    }
+                    
+                    updateThemeStatus();
+                });
+            }
+        });
+    </script>
+</body>
+</html>
