@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Name - Portfolio</title>
+    <title>Christian S. Sabarre</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
+            darkMode: 'class',
             theme: {
                 extend: {
                     colors: {
@@ -42,7 +43,7 @@
         <div class="container mx-auto px-6 py-4">
             <div class="flex justify-between items-center">
                 <div class="text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-                    Portfolio
+                    Christian's Projects
                 </div>
                 <div class="flex items-center space-x-4">
                     <!-- Dark Mode Toggle -->
@@ -80,7 +81,7 @@
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-50 via-white to-purple-50 relative overflow-hidden">
+    <section id="home" class="min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-50 via-white to-purple-50 dark:from-gray-800 dark:via-gray-900 dark:to-gray-800 relative overflow-hidden">
         <!-- Background Animation -->
         <div class="absolute inset-0 overflow-hidden">
             <div class="absolute -top-40 -right-40 w-80 h-80 bg-primary/10 rounded-full blur-3xl animate-pulse-slow"></div>
@@ -90,25 +91,25 @@
         <div class="container mx-auto px-6 text-center relative z-10">
             <div class="animate-fade-in-down">
                 <div class="w-32 h-32 mx-auto mb-8 rounded-full bg-gradient-to-r from-primary to-secondary p-1">
-                    <div class="w-full h-full rounded-full bg-white flex items-center justify-center">
-                        <i class="fas fa-user text-4xl text-gray-400"></i>
+                    <div class="w-full h-full rounded-full bg-white dark:bg-gray-800 flex items-center justify-center">
+                        <i class="fas fa-user text-4xl text-gray-400 dark:text-gray-500"></i>
                     </div>
                 </div>
                 <h1 class="text-4xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-                    Your Name
+                    Christian Sabarre
                 </h1>
-                <p class="text-xl md:text-2xl text-gray-600 mb-8">
-                    Data Scientist & Analytics Expert
+                <p class="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8">
+                    Information Systems Student Specializing in Data Science
                 </p>
-                <p class="text-lg text-gray-500 mb-12 max-w-2xl mx-auto">
-                    Transforming raw data into actionable insights through advanced analytics, machine learning, and data visualization.
+                <p class="text-lg text-gray-500 dark:text-gray-400 mb-12 max-w-2xl mx-auto">
+                    Transforming raw data into actionable insights through analytics, machine learning, and data visualization.
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
                     <a href="#projects" class="bg-primary hover:bg-indigo-700 text-white px-8 py-3 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
-                        View Data Projects
+                        View Projects
                     </a>
                     <a href="#contact" class="border-2 border-primary text-primary hover:bg-primary hover:text-white px-8 py-3 rounded-full transition-all duration-300 transform hover:scale-105">
-                        Discuss Analytics
+                        Contact Me!
                     </a>
                 </div>
             </div>
@@ -121,49 +122,42 @@
     </section>
 
     <!-- About Section -->
-    <section id="about" class="py-20 bg-white">
+    <section id="about" class="py-20 bg-white dark:bg-gray-800">
         <div class="container mx-auto px-6">
             <div class="text-center mb-16 animate-fade-in-up">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">About Me</h2>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 dark:text-white">About Me</h2>
                 <div class="w-24 h-1 bg-gradient-to-r from-primary to-secondary mx-auto"></div>
             </div>
             <div class="grid md:grid-cols-2 gap-12 items-center">
                 <div class="animate-fade-in-up">
-                    <h3 class="text-2xl font-semibold mb-6 text-gray-800">Hello! I'm a passionate data scientist</h3>
-                    <p class="text-gray-600 mb-6 leading-relaxed">
-                        I specialize in extracting meaningful insights from complex datasets using statistical analysis, machine learning, 
-                        and advanced data visualization techniques. With expertise in predictive modeling and business intelligence, 
-                        I help organizations make data-driven decisions that drive growth and innovation.
+                    <h3 class="text-2xl font-semibold mb-6 text-gray-800 dark:text-white">Hello! I'm Christian, a passionate information systems student</h3>
+                    <p class="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
+                        I am very curious about how data could change the world; hence I try to make projects that align with my interests. Currently I am fascinated and interested 
+                        in analyzing data and visualizing it.
                     </p>
-                    <p class="text-gray-600 mb-8 leading-relaxed">
-                        When I'm not analyzing data, you can find me exploring new ML algorithms, contributing to data science communities, 
-                        or researching the latest trends in artificial intelligence and big data technologies.
+                    <p class="text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
+                        When I'm not at home messing with my laptop, I'm probably asleep!
                     </p>
                     <div class="flex flex-wrap gap-4">
-                        <span class="bg-gray-100 text-gray-700 px-4 py-2 rounded-full text-sm">Data Storyteller</span>
-                        <span class="bg-gray-100 text-gray-700 px-4 py-2 rounded-full text-sm">ML Enthusiast</span>
-                        <span class="bg-gray-100 text-gray-700 px-4 py-2 rounded-full text-sm">Analytics Expert</span>
+                        <span class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-4 py-2 rounded-full text-sm">Data Storyteller :></span>
+                        <span class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-4 py-2 rounded-full text-sm">Analytical Person</span>
                     </div>
                 </div>
                 <div class="animate-fade-in-up">
-                    <div class="bg-gradient-to-br from-primary/10 to-secondary/10 p-8 rounded-2xl">
-                        <h4 class="text-xl font-semibold mb-6 text-gray-800">Quick Facts</h4>
+                    <div class="bg-gradient-to-br from-primary/10 to-secondary/10 dark:from-primary/20 dark:to-secondary/20 p-8 rounded-2xl">
+                        <h4 class="text-xl font-semibold mb-6 text-gray-800 dark:text-white">Quick Facts</h4>
                         <div class="space-y-4">
                             <div class="flex items-center">
                                 <i class="fas fa-map-marker-alt text-primary w-6"></i>
-                                <span class="text-gray-600">Location: Your City, Country</span>
+                                <span class="text-gray-600 dark:text-gray-300">Location: Manila, Philippines</span>
                             </div>
                             <div class="flex items-center">
                                 <i class="fas fa-graduation-cap text-primary w-6"></i>
-                                <span class="text-gray-600">Education: Data Science / Statistics</span>
+                                <span class="text-gray-600 dark:text-gray-300">Education: Information Systems</span>
                             </div>
                             <div class="flex items-center">
                                 <i class="fas fa-briefcase text-primary w-6"></i>
-                                <span class="text-gray-600">Experience: 4+ Years in Analytics</span>
-                            </div>
-                            <div class="flex items-center">
-                                <i class="fas fa-chart-line text-primary w-6"></i>
-                                <span class="text-gray-600">Models Deployed: 50+</span>
+                                <span class="text-gray-600 dark:text-gray-300">Experience: No Professional Experience yet</span>
                             </div>
                         </div>
                     </div>
@@ -173,43 +167,49 @@
     </section>
 
     <!-- Skills Section -->
-    <section id="skills" class="py-20 bg-gray-50">
+    <section id="skills" class="py-20 bg-gray-50 dark:bg-gray-900">
         <div class="container mx-auto px-6">
             <div class="text-center mb-16 animate-fade-in-up">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">Skills & Technologies</h2>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 dark:text-white">Skills & Technologies</h2>
                 <div class="w-24 h-1 bg-gradient-to-r from-primary to-secondary mx-auto"></div>
             </div>
             <div class="grid md:grid-cols-3 gap-8">
                 <!-- Programming & Analytics -->
-                <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 animate-fade-in-up">
+                <div class="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 animate-fade-in-up">
                     <div class="text-center mb-6">
                         <div class="w-16 h-16 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
                             <i class="fab fa-python text-white text-2xl"></i>
                         </div>
-                        <h3 class="text-xl font-semibold text-gray-800">Programming & Analytics</h3>
+                        <h3 class="text-xl font-semibold text-gray-800 dark:text-white">Programming & Analytics</h3>
                     </div>
                     <div class="space-y-3">
                         <div class="flex justify-between items-center">
-                            <span class="text-gray-600">Python</span>
-                            <div class="w-20 bg-gray-200 rounded-full h-2">
+                            <span class="text-gray-600 dark:text-gray-300">Python</span>
+                            <div class="w-20 bg-gray-200 dark:bg-gray-700 rounded-full h-2">
                                 <div class="bg-blue-500 h-2 rounded-full w-5/6"></div>
                             </div>
                         </div>
                         <div class="flex justify-between items-center">
-                            <span class="text-gray-600">R</span>
-                            <div class="w-20 bg-gray-200 rounded-full h-2">
+                            <span class="text-gray-600 dark:text-gray-300">C</span>
+                            <div class="w-20 bg-gray-200 dark:bg-gray-700 rounded-full h-2">
                                 <div class="bg-blue-500 h-2 rounded-full w-4/5"></div>
                             </div>
                         </div>
                         <div class="flex justify-between items-center">
-                            <span class="text-gray-600">SQL</span>
-                            <div class="w-20 bg-gray-200 rounded-full h-2">
+                            <span class="text-gray-600 dark:text-gray-300">Elm</span>
+                            <div class="w-20 bg-gray-200 dark:bg-gray-700 rounded-full h-2">
                                 <div class="bg-blue-500 h-2 rounded-full w-5/6"></div>
                             </div>
                         </div>
                         <div class="flex justify-between items-center">
-                            <span class="text-gray-600">Pandas/NumPy</span>
-                            <div class="w-20 bg-gray-200 rounded-full h-2">
+                            <span class="text-gray-600 dark:text-gray-300">Pandas/NumPy</span>
+                            <div class="w-20 bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                                <div class="bg-blue-500 h-2 rounded-full w-5/6"></div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600 dark:text-gray-300">MS SQL</span>
+                            <div class="w-20 bg-gray-200 dark:bg-gray-700 rounded-full h-2">
                                 <div class="bg-blue-500 h-2 rounded-full w-5/6"></div>
                             </div>
                         </div>
@@ -217,71 +217,53 @@
                 </div>
 
                 <!-- Machine Learning -->
-                <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 animate-fade-in-up" style="animation-delay: 0.1s;">
+                <div class="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 animate-fade-in-up" style="animation-delay: 0.1s;">
                     <div class="text-center mb-6">
                         <div class="w-16 h-16 bg-gradient-to-r from-green-500 to-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
                             <i class="fas fa-robot text-white text-2xl"></i>
                         </div>
-                        <h3 class="text-xl font-semibold text-gray-800">Machine Learning</h3>
+                        <h3 class="text-xl font-semibold text-gray-800 dark:text-white">Machine Learning</h3>
                     </div>
                     <div class="space-y-3">
                         <div class="flex justify-between items-center">
-                            <span class="text-gray-600">Scikit-learn</span>
-                            <div class="w-20 bg-gray-200 rounded-full h-2">
+                            <span class="text-gray-600 dark:text-gray-300">Scikit-learn</span>
+                            <div class="w-20 bg-gray-200 dark:bg-gray-700 rounded-full h-2">
                                 <div class="bg-green-500 h-2 rounded-full w-5/6"></div>
                             </div>
                         </div>
                         <div class="flex justify-between items-center">
-                            <span class="text-gray-600">TensorFlow/Keras</span>
-                            <div class="w-20 bg-gray-200 rounded-full h-2">
-                                <div class="bg-green-500 h-2 rounded-full w-4/5"></div>
-                            </div>
-                        </div>
-                        <div class="flex justify-between items-center">
-                            <span class="text-gray-600">PyTorch</span>
-                            <div class="w-20 bg-gray-200 rounded-full h-2">
+                            <span class="text-gray-600 dark:text-gray-300">PyTorch</span>
+                            <div class="w-20 bg-gray-200 dark:bg-gray-700 rounded-full h-2">
                                 <div class="bg-green-500 h-2 rounded-full w-3/4"></div>
-                            </div>
-                        </div>
-                        <div class="flex justify-between items-center">
-                            <span class="text-gray-600">XGBoost/LightGBM</span>
-                            <div class="w-20 bg-gray-200 rounded-full h-2">
-                                <div class="bg-green-500 h-2 rounded-full w-4/5"></div>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- Data Visualization & Tools -->
-                <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 animate-fade-in-up" style="animation-delay: 0.2s;">
+                <div class="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 animate-fade-in-up" style="animation-delay: 0.2s;">
                     <div class="text-center mb-6">
                         <div class="w-16 h-16 bg-gradient-to-r from-purple-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
                             <i class="fas fa-chart-bar text-white text-2xl"></i>
                         </div>
-                        <h3 class="text-xl font-semibold text-gray-800">Data Visualization & Tools</h3>
+                        <h3 class="text-xl font-semibold text-gray-800 dark:text-white">Data Visualization & Tools</h3>
                     </div>
                     <div class="space-y-3">
                         <div class="flex justify-between items-center">
-                            <span class="text-gray-600">Tableau</span>
-                            <div class="w-20 bg-gray-200 rounded-full h-2">
-                                <div class="bg-purple-500 h-2 rounded-full w-5/6"></div>
-                            </div>
-                        </div>
-                        <div class="flex justify-between items-center">
-                            <span class="text-gray-600">Power BI</span>
-                            <div class="w-20 bg-gray-200 rounded-full h-2">
+                            <span class="text-gray-600 dark:text-gray-300">Power BI</span>
+                            <div class="w-20 bg-gray-200 dark:bg-gray-700 rounded-full h-2">
                                 <div class="bg-purple-500 h-2 rounded-full w-4/5"></div>
                             </div>
                         </div>
                         <div class="flex justify-between items-center">
-                            <span class="text-gray-600">Matplotlib/Seaborn</span>
-                            <div class="w-20 bg-gray-200 rounded-full h-2">
+                            <span class="text-gray-600 dark:text-gray-300">Matplotlib/Seaborn</span>
+                            <div class="w-20 bg-gray-200 dark:bg-gray-700 rounded-full h-2">
                                 <div class="bg-purple-500 h-2 rounded-full w-5/6"></div>
                             </div>
                         </div>
                         <div class="flex justify-between items-center">
-                            <span class="text-gray-600">Plotly/D3.js</span>
-                            <div class="w-20 bg-gray-200 rounded-full h-2">
+                            <span class="text-gray-600 dark:text-gray-300">Plotly</span>
+                            <div class="w-20 bg-gray-200 dark:bg-gray-700 rounded-full h-2">
                                 <div class="bg-purple-500 h-2 rounded-full w-3/4"></div>
                             </div>
                         </div>
@@ -292,18 +274,18 @@
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="py-20 bg-white">
+    <section id="projects" class="py-20 bg-white dark:bg-gray-800">
         <div class="container mx-auto px-6">
             <div class="text-center mb-16 animate-fade-in-up">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">Data Science Projects</h2>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 dark:text-white">Projects</h2>
                 <div class="w-24 h-1 bg-gradient-to-r from-primary to-secondary mx-auto"></div>
-                <p class="text-gray-600 mt-4 max-w-2xl mx-auto">
-                    Real-world data science solutions delivering measurable business impact through advanced analytics and machine learning
+                <p class="text-gray-600 dark:text-gray-300 mt-4 max-w-2xl mx-auto">
+                    My Projects 
                 </p>
             </div>
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Project 1 -->
-                <div class="group bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 animate-fade-in-up">
+                <div class="group bg-white dark:bg-gray-700 rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 animate-fade-in-up">
                     <div class="h-48 bg-gradient-to-br from-blue-400 to-blue-600 relative overflow-hidden">
                         <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-all duration-300"></div>
                         <div class="absolute inset-0 flex items-center justify-center">
@@ -311,13 +293,12 @@
                         </div>
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-3 text-gray-800">Customer Churn Prediction Model</h3>
-                        <p class="text-gray-600 mb-4">Built a machine learning model to predict customer churn with 94% accuracy using ensemble methods. Implemented feature engineering and deployed to production via AWS.</p>
+                        <h3 class="text-xl font-semibold mb-3 text-gray-800 dark:text-white">MCU Phase Analysis: Dominance of Phase 3</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">A data visualization project showcasing how dominant the Phase 3 of the Marvel Cinematic Universe was compared to its other Phases</p>
                         <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm">Python</span>
-                            <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm">Scikit-learn</span>
-                            <span class="bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full text-sm">XGBoost</span>
-                            <span class="bg-red-100 text-red-700 px-3 py-1 rounded-full text-sm">AWS</span>
+                            <span class="bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300 px-3 py-1 rounded-full text-sm">Python</span>
+                            <span class="bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-300 px-3 py-1 rounded-full text-sm">Pandas/NumPy</span>
+                            <span class="bg-yellow-100 dark:bg-yellow-900 text-yellow-700 dark:text-yellow-300 px-3 py-1 rounded-full text-sm">Power BI</span>
                         </div>
                         <div class="flex space-x-4">
                             <a href="#" class="text-primary hover:text-indigo-700 transition-colors duration-300">
@@ -331,7 +312,7 @@
                 </div>
 
                 <!-- Project 2 -->
-                <div class="group bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 animate-fade-in-up" style="animation-delay: 0.1s;">
+                <div class="group bg-white dark:bg-gray-700 rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 animate-fade-in-up" style="animation-delay: 0.1s;">
                     <div class="h-48 bg-gradient-to-br from-green-400 to-green-600 relative overflow-hidden">
                         <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-all duration-300"></div>
                         <div class="absolute inset-0 flex items-center justify-center">
@@ -339,27 +320,25 @@
                         </div>
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-3 text-gray-800">NLP Sentiment Analysis Dashboard</h3>
-                        <p class="text-gray-600 mb-4">Real-time sentiment analysis of social media data using BERT and transformers. Interactive dashboard with live data streaming and sentiment trends visualization.</p>
+                        <h3 class="text-xl font-semibold mb-3 text-gray-800 dark:text-white">Coming Soon...</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">More exciting data science projects are on the way. Stay tuned for updates!</p>
                         <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm">Python</span>
-                            <span class="bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-sm">BERT</span>
-                            <span class="bg-red-100 text-red-700 px-3 py-1 rounded-full text-sm">Streamlit</span>
-                            <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm">Apache Kafka</span>
+                            <span class="bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300 px-3 py-1 rounded-full text-sm">Python</span>
+                            <span class="bg-purple-100 dark:bg-purple-900 text-purple-700 dark:text-purple-300 px-3 py-1 rounded-full text-sm">TBD</span>
                         </div>
                         <div class="flex space-x-4">
-                            <a href="#" class="text-primary hover:text-indigo-700 transition-colors duration-300">
+                            <a href="#" class="text-gray-400 cursor-not-allowed">
                                 <i class="fab fa-github"></i> Code
                             </a>
-                            <a href="#" class="text-primary hover:text-indigo-700 transition-colors duration-300">
-                                <i class="fas fa-external-link-alt"></i> Demo App
+                            <a href="#" class="text-gray-400 cursor-not-allowed">
+                                <i class="fas fa-external-link-alt"></i> Demo
                             </a>
                         </div>
                     </div>
                 </div>
 
                 <!-- Project 3 -->
-                <div class="group bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 animate-fade-in-up" style="animation-delay: 0.2s;">
+                <div class="group bg-white dark:bg-gray-700 rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 animate-fade-in-up" style="animation-delay: 0.2s;">
                     <div class="h-48 bg-gradient-to-br from-purple-400 to-purple-600 relative overflow-hidden">
                         <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-all duration-300"></div>
                         <div class="absolute inset-0 flex items-center justify-center">
@@ -367,20 +346,18 @@
                         </div>
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-3 text-gray-800">Computer Vision Object Detection</h3>
-                        <p class="text-gray-600 mb-4">Deep learning model for real-time object detection and classification using YOLO and CNN architectures. Deployed as REST API with 98% accuracy on custom dataset.</p>
+                        <h3 class="text-xl font-semibold mb-3 text-gray-800 dark:text-white">Coming Soon...</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">More exciting data science projects are on the way. Stay tuned for updates!</p>
                         <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm">PyTorch</span>
-                            <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm">OpenCV</span>
-                            <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">YOLO</span>
-                            <span class="bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-sm">FastAPI</span>
+                            <span class="bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300 px-3 py-1 rounded-full text-sm">Python</span>
+                            <span class="bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-300 px-3 py-1 rounded-full text-sm">TBD</span>
                         </div>
                         <div class="flex space-x-4">
-                            <a href="#" class="text-primary hover:text-indigo-700 transition-colors duration-300">
+                            <a href="#" class="text-gray-400 cursor-not-allowed">
                                 <i class="fab fa-github"></i> Code
                             </a>
-                            <a href="#" class="text-primary hover:text-indigo-700 transition-colors duration-300">
-                                <i class="fas fa-external-link-alt"></i> API Demo
+                            <a href="#" class="text-gray-400 cursor-not-allowed">
+                                <i class="fas fa-external-link-alt"></i> Demo
                             </a>
                         </div>
                     </div>
@@ -388,85 +365,15 @@
             </div>
             <div class="text-center mt-12">
                 <a href="#" class="inline-flex items-center bg-primary hover:bg-indigo-700 text-white px-8 py-3 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
-                    View All Data Projects
+                    View All Projects
                     <i class="fas fa-arrow-right ml-2"></i>
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- Data Science Specializations Section -->
-    <section class="py-20 bg-gray-50">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16 animate-fade-in-up">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">Data Science Specializations</h2>
-                <div class="w-24 h-1 bg-gradient-to-r from-primary to-secondary mx-auto"></div>
-                <p class="text-gray-600 mt-4 max-w-2xl mx-auto">
-                    Specialized expertise across key areas of data science and analytics
-                </p>
-            </div>
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <!-- Predictive Analytics -->
-                <div class="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 text-center animate-fade-in-up">
-                    <div class="w-16 h-16 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <i class="fas fa-crystal-ball text-white text-2xl"></i>
-                    </div>
-                    <h3 class="text-lg font-semibold mb-3 text-gray-800">Predictive Analytics</h3>
-                    <p class="text-gray-600 text-sm">Time series forecasting, regression models, and predictive modeling for business insights</p>
-                </div>
-
-                <!-- Natural Language Processing -->
-                <div class="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 text-center animate-fade-in-up" style="animation-delay: 0.1s;">
-                    <div class="w-16 h-16 bg-gradient-to-r from-green-500 to-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <i class="fas fa-comments text-white text-2xl"></i>
-                    </div>
-                    <h3 class="text-lg font-semibold mb-3 text-gray-800">Natural Language Processing</h3>
-                    <p class="text-gray-600 text-sm">Text analysis, sentiment analysis, chatbots, and language model fine-tuning</p>
-                </div>
-
-                <!-- Computer Vision -->
-                <div class="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 text-center animate-fade-in-up" style="animation-delay: 0.2s;">
-                    <div class="w-16 h-16 bg-gradient-to-r from-purple-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <i class="fas fa-camera text-white text-2xl"></i>
-                    </div>
-                    <h3 class="text-lg font-semibold mb-3 text-gray-800">Computer Vision</h3>
-                    <p class="text-gray-600 text-sm">Image classification, object detection, OCR, and deep learning for visual data</p>
-                </div>
-
-                <!-- Business Intelligence -->
-                <div class="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 text-center animate-fade-in-up" style="animation-delay: 0.3s;">
-                    <div class="w-16 h-16 bg-gradient-to-r from-red-500 to-red-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <i class="fas fa-chart-pie text-white text-2xl"></i>
-                    </div>
-                    <h3 class="text-lg font-semibold mb-3 text-gray-800">Business Intelligence</h3>
-                    <p class="text-gray-600 text-sm">Data warehousing, ETL pipelines, dashboards, and business metrics optimization</p>
-                </div>
-            </div>
-
-            <!-- Key Metrics Section -->
-            <div class="mt-16 grid md:grid-cols-4 gap-8 text-center">
-                <div class="animate-fade-in-up">
-                    <div class="text-3xl font-bold text-primary mb-2">50+</div>
-                    <div class="text-gray-600">ML Models Deployed</div>
-                </div>
-                <div class="animate-fade-in-up" style="animation-delay: 0.1s;">
-                    <div class="text-3xl font-bold text-primary mb-2">1M+</div>
-                    <div class="text-gray-600">Data Points Analyzed</div>
-                </div>
-                <div class="animate-fade-in-up" style="animation-delay: 0.2s;">
-                    <div class="text-3xl font-bold text-primary mb-2">95%</div>
-                    <div class="text-gray-600">Average Model Accuracy</div>
-                </div>
-                <div class="animate-fade-in-up" style="animation-delay: 0.3s;">
-                    <div class="text-3xl font-bold text-primary mb-2">15+</div>
-                    <div class="text-gray-600">Industry Projects</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Power BI Dashboard Section -->
-    <section id="powerbi" class="py-20 bg-white dark:bg-gray-800">
+    <section id="powerbi" class="py-20 bg-gray-50 dark:bg-gray-900">
         <div class="container mx-auto px-6">
             <div class="text-center mb-16 animate-fade-in-up">
                 <h2 class="text-3xl md:text-4xl font-bold mb-4 dark:text-white">Interactive Dashboard</h2>
@@ -478,7 +385,7 @@
             
             <!-- Power BI Embed Container -->
             <div class="max-w-6xl mx-auto">
-                <div class="bg-gray-100 dark:bg-gray-700 rounded-2xl p-8 shadow-lg">
+                <div class="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg">
                     <div class="text-center mb-6">
                         <h3 class="text-xl font-semibold text-gray-800 dark:text-white mb-2">Live Analytics Dashboard</h3>
                         <p class="text-gray-600 dark:text-gray-300">Interactive data visualization with drill-down capabilities</p>
@@ -492,28 +399,14 @@
                                 <div class="text-center">
                                     <i class="fas fa-chart-bar text-6xl text-primary mb-4"></i>
                                     <h4 class="text-xl font-semibold text-gray-800 dark:text-white mb-2">Power BI Dashboard</h4>
-                                    <p class="text-gray-600 dark:text-gray-300 mb-4">Replace this section with your Power BI embed code</p>
+                                    <p class="text-gray-600 dark:text-gray-300 mb-4">Coming Soon - MCU Data Analysis Dashboard</p>
                                     <div class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-md max-w-md mx-auto">
-                                        <p class="text-sm text-gray-700 dark:text-gray-300 font-mono">
-                                            &lt;iframe title="Your Dashboard" width="100%" height="600" 
-                                            src="https://app.powerbi.com/reportEmbed?reportId=YOUR_REPORT_ID" 
-                                            frameborder="0" allowFullScreen="true"&gt;&lt;/iframe&gt;
+                                        <p class="text-sm text-gray-700 dark:text-gray-300">
+                                            Dashboard featuring Marvel Cinematic Universe box office analysis and trends
                                         </p>
                                     </div>
                                 </div>
                             </div>
-                            
-                            <!-- Uncomment and replace with your actual Power BI embed code -->
-                            <!-- 
-                            <iframe 
-                                title="Your Dashboard Name" 
-                                width="100%" 
-                                height="600" 
-                                src="https://app.powerbi.com/reportEmbed?reportId=YOUR_REPORT_ID&autoAuth=true&ctid=YOUR_TENANT_ID" 
-                                frameborder="0" 
-                                allowFullScreen="true">
-                            </iframe>
-                            -->
                         </div>
                     </div>
                     
@@ -546,6 +439,56 @@
         </div>
     </section>
 
+    <!-- Certifications Section -->
+    <section class="py-20 bg-white dark:bg-gray-800">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 animate-fade-in-up">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 dark:text-white">Certifications</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-primary to-secondary mx-auto"></div>
+                <p class="text-gray-600 dark:text-gray-300 mt-4 max-w-2xl mx-auto">
+                    Will add soon, just gonna get them all
+                </p>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Cert 1 -->
+                <div class="bg-gray-50 dark:bg-gray-700 p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 text-center animate-fade-in-up">
+                    <div class="w-16 h-16 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-certificate text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-3 text-gray-800 dark:text-white">Coming Soon</h3>
+                    <p class="text-gray-600 dark:text-gray-300 text-sm">Data science certifications in progress</p>
+                </div>
+
+                <!-- Cert 2 -->
+                <div class="bg-gray-50 dark:bg-gray-700 p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 text-center animate-fade-in-up" style="animation-delay: 0.1s;">
+                    <div class="w-16 h-16 bg-gradient-to-r from-green-500 to-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-award text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-3 text-gray-800 dark:text-white">Coming Soon</h3>
+                    <p class="text-gray-600 dark:text-gray-300 text-sm">Machine learning certifications in progress</p>
+                </div>
+
+                <!-- Cert 3 -->
+                <div class="bg-gray-50 dark:bg-gray-700 p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 text-center animate-fade-in-up" style="animation-delay: 0.2s;">
+                    <div class="w-16 h-16 bg-gradient-to-r from-purple-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-medal text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-3 text-gray-800 dark:text-white">Coming Soon</h3>
+                    <p class="text-gray-600 dark:text-gray-300 text-sm">Analytics certifications in progress</p>
+                </div>
+
+                <!-- Cert 4 -->
+                <div class="bg-gray-50 dark:bg-gray-700 p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 text-center animate-fade-in-up" style="animation-delay: 0.3s;">
+                    <div class="w-16 h-16 bg-gradient-to-r from-red-500 to-red-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-trophy text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-3 text-gray-800 dark:text-white">Coming Soon</h3>
+                    <p class="text-gray-600 dark:text-gray-300 text-sm">Visualization certifications in progress</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Contact Section -->
     <section id="contact" class="py-20 bg-gradient-to-br from-indigo-50 via-white to-purple-50 dark:from-gray-800 dark:via-gray-900 dark:to-gray-800">
         <div class="container mx-auto px-6">
@@ -553,45 +496,45 @@
                 <h2 class="text-3xl md:text-4xl font-bold mb-4 dark:text-white">Get In Touch</h2>
                 <div class="w-24 h-1 bg-gradient-to-r from-primary to-secondary mx-auto mb-6"></div>
                 <p class="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-                    Ready to transform your data into actionable insights? Let's discuss how machine learning and analytics can drive your business forward.
+                    Hi! Let's talk
                 </p>
             </div>
-            <div class="grid md:grid-cols-2 gap-12 max-w-4xl mx-auto">
+            <div class="max-w-2xl mx-auto">
                 <!-- Contact Info -->
                 <div class="animate-fade-in-up">
-                    <h3 class="text-2xl font-semibold mb-8 text-gray-800">Let's Connect</h3>
+                    <h3 class="text-2xl font-semibold mb-8 text-gray-800 dark:text-white text-center">Let's Connect</h3>
                     <div class="space-y-6">
-                        <div class="flex items-center group">
+                        <div class="flex items-center group justify-center">
                             <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mr-4 group-hover:bg-primary/20 transition-colors duration-300">
                                 <i class="fas fa-envelope text-primary"></i>
                             </div>
                             <div>
-                                <p class="text-gray-600 text-sm">Email</p>
-                                <p class="text-gray-800 font-medium">your.email@example.com</p>
+                                <p class="text-gray-600 dark:text-gray-400 text-sm">Email</p>
+                                <p class="text-gray-800 dark:text-white font-medium">ianchristiansabarre@gmail.com</p>
                             </div>
                         </div>
-                        <div class="flex items-center group">
+                        <div class="flex items-center group justify-center">
                             <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mr-4 group-hover:bg-primary/20 transition-colors duration-300">
                                 <i class="fas fa-phone text-primary"></i>
                             </div>
                             <div>
-                                <p class="text-gray-600 text-sm">Phone</p>
-                                <p class="text-gray-800 font-medium">+1 (555) 123-4567</p>
+                                <p class="text-gray-600 dark:text-gray-400 text-sm">Phone</p>
+                                <p class="text-gray-800 dark:text-white font-medium">+63 09083532956</p>
                             </div>
                         </div>
-                        <div class="flex items-center group">
+                        <div class="flex items-center group justify-center">
                             <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mr-4 group-hover:bg-primary/20 transition-colors duration-300">
                                 <i class="fas fa-map-marker-alt text-primary"></i>
                             </div>
                             <div>
-                                <p class="text-gray-600 text-sm">Location</p>
-                                <p class="text-gray-800 font-medium">Your City, Country</p>
+                                <p class="text-gray-600 dark:text-gray-400 text-sm">Location</p>
+                                <p class="text-gray-800 dark:text-white font-medium">Manila, Philippines</p>
                             </div>
                         </div>
                     </div>
-                    <div class="mt-8">
-                        <h4 class="text-lg font-semibold mb-4 text-gray-800">Follow Me</h4>
-                        <div class="flex space-x-4">
+                    <div class="mt-8 text-center">
+                        <h4 class="text-lg font-semibold mb-4 text-gray-800 dark:text-white">Follow Me</h4>
+                        <div class="flex justify-center space-x-4">
                             <a href="#" class="w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center hover:bg-indigo-700 transition-all duration-300 transform hover:scale-110">
                                 <i class="fab fa-github"></i>
                             </a>
@@ -599,35 +542,10 @@
                                 <i class="fab fa-linkedin"></i>
                             </a>
                             <a href="#" class="w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center hover:bg-indigo-700 transition-all duration-300 transform hover:scale-110">
-                                <i class="fab fa-twitter"></i>
-                            </a>
-                            <a href="#" class="w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center hover:bg-indigo-700 transition-all duration-300 transform hover:scale-110">
                                 <i class="fab fa-instagram"></i>
                             </a>
                         </div>
                     </div>
-                </div>
-
-                <!-- Contact Form -->
-                <div class="animate-fade-in-up" style="animation-delay: 0.1s;">
-                    <form class="space-y-6">
-                        <div>
-                            <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Name</label>
-                            <input type="text" id="name" name="name" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300" placeholder="Your Name">
-                        </div>
-                        <div>
-                            <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Email</label>
-                            <input type="email" id="email" name="email" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300" placeholder="your.email@example.com">
-                        </div>
-                        <div>
-                            <label for="subject" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Subject</label>
-                            <input type="text" id="subject" name="subject" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300" placeholder="Project Discussion">
-                        </div>
-                        <button type="submit" class="w-full bg-primary hover:bg-indigo-700 text-white px-8 py-3 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
-                            Send Message
-                            <i class="fas fa-paper-plane ml-2"></i>
-                        </button>
-                    </form>
                 </div>
             </div>
         </div>
@@ -638,21 +556,22 @@
         <div class="container mx-auto px-6">
             <div class="text-center">
                 <div class="text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent mb-4">
-                    Portfolio
+                    Christian's Portfolio
                 </div>
                 <p class="text-gray-400 mb-8">
-                    Thanks for visiting! Let's build something amazing together.
+                    Thanks for visiting! 
                 </p>
                 <div class="flex justify-center space-x-6 mb-8">
                     <a href="#home" class="text-gray-400 hover:text-white transition-colors duration-300">Home</a>
                     <a href="#about" class="text-gray-400 hover:text-white transition-colors duration-300">About</a>
                     <a href="#skills" class="text-gray-400 hover:text-white transition-colors duration-300">Skills</a>
                     <a href="#projects" class="text-gray-400 hover:text-white transition-colors duration-300">Projects</a>
+                    <a href="#powerbi" class="text-gray-400 hover:text-white transition-colors duration-300">Dashboard</a>
                     <a href="#contact" class="text-gray-400 hover:text-white transition-colors duration-300">Contact</a>
                 </div>
                 <div class="border-t border-gray-800 pt-8">
                     <p class="text-gray-400 text-sm">
-                        © 2024 Your Name. All rights reserved. Made with ❤️ and lots of coffee.
+                        © 2025 Christian Sabarre. All rights reserved. 
                     </p>
                 </div>
             </div>
