@@ -12,6 +12,36 @@
                 extend: {
                     colors: {
                         'primary': '#3b82f6',
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.8s ease-out forwards',
+                        'slide-up': 'slideUp 0.6s ease-out forwards',
+                        'slide-down': 'slideDown 0.6s ease-out forwards',
+                        'scale-in': 'scaleIn 0.5s ease-out forwards',
+                        'float': 'float 3s ease-in-out infinite',
+                        'pulse-slow': 'pulse 3s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        slideDown: {
+                            '0%': { opacity: '0', transform: 'translateY(-30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        scaleIn: {
+                            '0%': { opacity: '0', transform: 'scale(0.8)' },
+                            '100%': { opacity: '1', transform: 'scale(1)' }
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-10px)' }
+                        }
                     }
                 }
             }
@@ -28,67 +58,180 @@
             }
         })();
     </script>
+    <style>
+        .opening-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: white;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.5s ease-out;
+        }
+        
+        .dark .opening-overlay {
+            background: #111827;
+        }
+        
+        .cs-initial {
+            font-size: 4rem;
+            font-weight: bold;
+            color: #3b82f6;
+            opacity: 0;
+            animation: scaleIn 1s ease-out 0.5s forwards;
+        }
+        
+        .full-name {
+            font-size: 4rem;
+            font-weight: bold;
+            color: #3b82f6;
+            opacity: 0;
+            white-space: nowrap;
+            animation: fadeIn 1s ease-out 2s forwards;
+        }
+        
+        .hidden-initially {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        
+        .animate-in {
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+        
+        .animate-slide-up {
+            animation: slideUp 0.6s ease-out forwards;
+        }
+        
+        .animate-scale-in {
+            animation: scaleIn 0.5s ease-out forwards;
+        }
+        
+        @media (max-width: 768px) {
+            .cs-initial, .full-name {
+                font-size: 2.5rem;
+            }
+        }
+        
+        .section-animate {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .section-animate.in-view {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .stagger-1 { animation-delay: 0.1s; }
+        .stagger-2 { animation-delay: 0.2s; }
+        .stagger-3 { animation-delay: 0.3s; }
+        .stagger-4 { animation-delay: 0.4s; }
+        .stagger-5 { animation-delay: 0.5s; }
+        
+        .hover-lift {
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .hover-lift:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .dark .hover-lift:hover {
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+    </style>
 </head>
-<body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-300">
+<body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-500 overflow-x-hidden">
+    
+    <!-- Opening Animation Overlay -->
+    <div id="opening-overlay" class="opening-overlay">
+        <div class="text-center">
+            <div id="cs-text" class="cs-initial">CS</div>
+            <div id="full-name" class="full-name" style="display: none;">Christian Sabarre</div>
+        </div>
+    </div>
+
     <!-- Header -->
-    <header class="fixed top-0 w-full bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm border-b border-gray-200 dark:border-gray-700 z-50">
+    <header class="fixed top-0 w-full bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm border-b border-gray-200 dark:border-gray-700 z-50 transition-all duration-500 hidden-initially">
         <div class="max-w-4xl mx-auto px-6 py-4 flex justify-between items-center">
-            <h1 class="text-xl font-semibold">Christian Sabarre</h1>
+            <h1 class="text-xl font-semibold hover:text-primary transition-colors duration-300 cursor-pointer">Christian Sabarre</h1>
             
             <!-- Dark Mode Toggle -->
-            <button id="dark-mode-toggle" class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
-                <span class="dark:hidden">🌙</span>
-                <span class="hidden dark:inline">☀️</span>
+            <button id="dark-mode-toggle" class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300 hover:scale-110">
+                <span class="dark:hidden text-xl">🌙</span>
+                <span class="hidden dark:inline text-xl">☀️</span>
             </button>
         </div>
     </header>
 
     <main class="max-w-4xl mx-auto px-6 pt-20">
         <!-- Hero Section -->
-        <section class="py-16 text-center">
-            <div class="w-24 h-24 bg-primary rounded-full mx-auto mb-6 flex items-center justify-center text-white text-2xl font-bold">
+        <section class="py-20 text-center section-animate">
+            <div class="w-32 h-32 bg-gradient-to-br from-primary to-blue-600 rounded-full mx-auto mb-8 flex items-center justify-center text-white text-3xl font-bold shadow-lg hover-lift animate-float">
                 CS
             </div>
-            <h2 class="text-3xl md:text-4xl font-bold mb-4">Christian Sabarre</h2>
-            <p class="text-lg text-gray-600 dark:text-gray-400 mb-2">Information Systems Student</p>
-            <p class="text-gray-500 dark:text-gray-500 mb-8">Specializing in Data Science & Analytics</p>
+            <h2 class="text-4xl md:text-5xl font-bold mb-4 hidden-initially">Christian Sabarre</h2>
+            <p class="text-lg text-gray-600 dark:text-gray-400 mb-2 hidden-initially">Information Systems Student</p>
+            <p class="text-gray-500 dark:text-gray-500 mb-12 hidden-initially">Specializing in Data Science & Analytics</p>
             
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="#projects" class="bg-primary text-white px-6 py-2 rounded-lg hover:bg-blue-600 transition-colors">
+            <div class="flex flex-col sm:flex-row gap-4 justify-center hidden-initially">
+                <a href="#projects" class="bg-primary text-white px-8 py-3 rounded-full hover:bg-blue-600 transition-all duration-300 hover:scale-105 hover:shadow-lg">
                     View Projects
                 </a>
-                <a href="#contact" class="border border-primary text-primary px-6 py-2 rounded-lg hover:bg-primary hover:text-white transition-colors">
+                <a href="#contact" class="border border-primary text-primary px-8 py-3 rounded-full hover:bg-primary hover:text-white transition-all duration-300 hover:scale-105">
                     Contact
                 </a>
             </div>
         </section>
 
         <!-- About Section -->
-        <section id="about" class="py-16 border-t border-gray-200 dark:border-gray-700">
-            <h3 class="text-2xl font-bold mb-6">About</h3>
-            <div class="grid md:grid-cols-2 gap-8">
-                <div>
-                    <p class="text-gray-600 dark:text-gray-400 mb-4">
-                        I'm curious about how data can change the world. I love analyzing and visualizing data to find meaningful insights.
+        <section id="about" class="py-20 border-t border-gray-200 dark:border-gray-700 section-animate">
+            <h3 class="text-3xl font-bold mb-8 text-center">About</h3>
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6">
+                    <p class="text-gray-600 dark:text-gray-400 leading-relaxed hidden-initially stagger-1">
+                        I'm curious about how data can change the world. I love analyzing and visualizing data to find meaningful insights that drive decisions and create impact.
                     </p>
-                    <p class="text-gray-600 dark:text-gray-400">
-                        When I'm not working on my laptop, I'm probably sleeping!
+                    <p class="text-gray-600 dark:text-gray-400 leading-relaxed hidden-initially stagger-2">
+                        When I'm not working on my laptop exploring datasets, I'm probably dreaming about new ways to visualize information.
                     </p>
                 </div>
-                <div class="space-y-3">
-                    <div><span class="font-medium">Location:</span> Manila, Philippines</div>
-                    <div><span class="font-medium">Education:</span> Information Systems</div>
-                    <div><span class="font-medium">Experience:</span> Student</div>
+                <div class="bg-gray-50 dark:bg-gray-800 p-8 rounded-2xl space-y-4 hover-lift hidden-initially stagger-3">
+                    <div class="flex items-center space-x-3">
+                        <span class="w-2 h-2 bg-primary rounded-full"></span>
+                        <span class="text-sm text-gray-500">Location</span>
+                        <span class="font-medium">Manila, Philippines</span>
+                    </div>
+                    <div class="flex items-center space-x-3">
+                        <span class="w-2 h-2 bg-primary rounded-full"></span>
+                        <span class="text-sm text-gray-500">Education</span>
+                        <span class="font-medium">Information Systems</span>
+                    </div>
+                    <div class="flex items-center space-x-3">
+                        <span class="w-2 h-2 bg-primary rounded-full"></span>
+                        <span class="text-sm text-gray-500">Status</span>
+                        <span class="font-medium">Student & Learner</span>
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- Skills Section -->
-        <section id="skills" class="py-16 border-t border-gray-200 dark:border-gray-700">
-            <h3 class="text-2xl font-bold mb-6">Skills</h3>
-            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div>
-                    <h4 class="font-medium mb-3">Programming</h4>
+        <section id="skills" class="py-20 border-t border-gray-200 dark:border-gray-700 section-animate">
+            <h3 class="text-3xl font-bold mb-12 text-center">Skills</h3>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-sm hover-lift border border-gray-100 dark:border-gray-700 hidden-initially stagger-1">
+                    <div class="w-12 h-12 bg-blue-100 dark:bg-blue-900 rounded-lg flex items-center justify-center mb-4">
+                        <span class="text-blue-600 dark:text-blue-400 text-xl">💻</span>
+                    </div>
+                    <h4 class="font-semibold mb-3">Programming</h4>
                     <div class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
                         <div>Python</div>
                         <div>C</div>
@@ -96,16 +239,24 @@
                         <div>MS SQL</div>
                     </div>
                 </div>
-                <div>
-                    <h4 class="font-medium mb-3">Data Science</h4>
+                
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-sm hover-lift border border-gray-100 dark:border-gray-700 hidden-initially stagger-2">
+                    <div class="w-12 h-12 bg-green-100 dark:bg-green-900 rounded-lg flex items-center justify-center mb-4">
+                        <span class="text-green-600 dark:text-green-400 text-xl">🤖</span>
+                    </div>
+                    <h4 class="font-semibold mb-3">Data Science</h4>
                     <div class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
                         <div>Pandas/NumPy</div>
                         <div>Scikit-learn</div>
                         <div>PyTorch</div>
                     </div>
                 </div>
-                <div>
-                    <h4 class="font-medium mb-3">Visualization</h4>
+                
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-sm hover-lift border border-gray-100 dark:border-gray-700 hidden-initially stagger-3">
+                    <div class="w-12 h-12 bg-purple-100 dark:bg-purple-900 rounded-lg flex items-center justify-center mb-4">
+                        <span class="text-purple-600 dark:text-purple-400 text-xl">📊</span>
+                    </div>
+                    <h4 class="font-semibold mb-3">Visualization</h4>
                     <div class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
                         <div>Power BI</div>
                         <div>Matplotlib</div>
@@ -116,90 +267,195 @@
         </section>
 
         <!-- Projects Section -->
-        <section id="projects" class="py-16 border-t border-gray-200 dark:border-gray-700">
-            <h3 class="text-2xl font-bold mb-6">Projects</h3>
+        <section id="projects" class="py-20 border-t border-gray-200 dark:border-gray-700 section-animate">
+            <h3 class="text-3xl font-bold mb-12 text-center">Projects</h3>
             <div class="space-y-8">
                 <!-- Project 1 -->
-                <div class="border border-gray-200 dark:border-gray-700 rounded-lg p-6">
-                    <h4 class="text-lg font-medium mb-2">MCU Phase Analysis</h4>
-                    <p class="text-gray-600 dark:text-gray-400 mb-4">
-                        Data visualization project analyzing the dominance of Marvel Cinematic Universe Phase 3 compared to other phases.
-                    </p>
-                    <div class="flex flex-wrap gap-2 mb-4">
-                        <span class="bg-gray-100 dark:bg-gray-800 text-xs px-2 py-1 rounded">Python</span>
-                        <span class="bg-gray-100 dark:bg-gray-800 text-xs px-2 py-1 rounded">Pandas</span>
-                        <span class="bg-gray-100 dark:bg-gray-800 text-xs px-2 py-1 rounded">Power BI</span>
-                    </div>
-                    <div class="flex gap-4">
-                        <a href="#" class="text-primary hover:underline text-sm">View Code</a>
-                        <a href="#" class="text-primary hover:underline text-sm">Live Demo</a>
+                <div class="border border-gray-200 dark:border-gray-700 rounded-2xl p-8 hover-lift transition-all duration-500 hidden-initially stagger-1">
+                    <div class="flex items-start space-x-4">
+                        <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <span class="text-white text-xl">🎬</span>
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="text-xl font-semibold mb-3">MCU Phase Analysis</h4>
+                            <p class="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
+                                Deep dive into Marvel Cinematic Universe data, analyzing box office performance, critical reception, and audience engagement across different phases to identify patterns and trends.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 text-xs px-3 py-1 rounded-full">Python</span>
+                                <span class="bg-green-50 dark:bg-green-900/30 text-green-700 dark:text-green-300 text-xs px-3 py-1 rounded-full">Pandas</span>
+                                <span class="bg-purple-50 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 text-xs px-3 py-1 rounded-full">Power BI</span>
+                            </div>
+                            <div class="flex gap-4">
+                                <a href="#" class="text-primary hover:text-blue-600 transition-colors text-sm font-medium hover:underline">View Code →</a>
+                                <a href="#" class="text-primary hover:text-blue-600 transition-colors text-sm font-medium hover:underline">Live Demo →</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <!-- More Projects Coming Soon -->
-                <div class="border border-gray-200 dark:border-gray-700 rounded-lg p-6 border-dashed">
+                <!-- Coming Soon -->
+                <div class="border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-2xl p-8 text-center hidden-initially stagger-2">
+                    <div class="w-16 h-16 bg-gray-100 dark:bg-gray-800 rounded-full mx-auto mb-4 flex items-center justify-center">
+                        <span class="text-2xl">⏳</span>
+                    </div>
                     <h4 class="text-lg font-medium mb-2 text-gray-500">More Projects Coming Soon</h4>
                     <p class="text-gray-400 dark:text-gray-500">
-                        Working on exciting data science projects. Stay tuned!
+                        Currently working on exciting data science projects that will be shared soon.
                     </p>
                 </div>
             </div>
         </section>
 
         <!-- Dashboard Section -->
-        <section id="dashboard" class="py-16 border-t border-gray-200 dark:border-gray-700">
-            <h3 class="text-2xl font-bold mb-6">Dashboard</h3>
-            <div class="border border-gray-200 dark:border-gray-700 rounded-lg p-8 text-center">
-                <div class="text-6xl mb-4">📊</div>
-                <h4 class="text-lg font-medium mb-2">Power BI Dashboard</h4>
-                <p class="text-gray-600 dark:text-gray-400 mb-4">
-                    Interactive MCU data analysis dashboard coming soon
+        <section id="dashboard" class="py-20 border-t border-gray-200 dark:border-gray-700 section-animate">
+            <h3 class="text-3xl font-bold mb-12 text-center">Dashboard</h3>
+            <div class="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-gray-800 dark:to-gray-700 rounded-2xl p-12 text-center hover-lift hidden-initially">
+                <div class="text-6xl mb-6 animate-pulse-slow">📊</div>
+                <h4 class="text-2xl font-semibold mb-4">Interactive Power BI Dashboard</h4>
+                <p class="text-gray-600 dark:text-gray-400 mb-6 max-w-2xl mx-auto">
+                    An immersive data visualization experience featuring Marvel Cinematic Universe analytics with interactive filters and real-time insights.
                 </p>
-                <div class="bg-gray-50 dark:bg-gray-800 rounded p-4 text-sm text-gray-500">
-                    Dashboard will feature Marvel Cinematic Universe box office analysis and trends
+                <div class="inline-block bg-white dark:bg-gray-800 rounded-lg p-4 shadow-sm">
+                    <p class="text-sm text-gray-500">🚀 Coming Soon - MCU Data Universe</p>
                 </div>
             </div>
         </section>
 
         <!-- Contact Section -->
-        <section id="contact" class="py-16 border-t border-gray-200 dark:border-gray-700">
-            <h3 class="text-2xl font-bold mb-6">Contact</h3>
-            <div class="grid sm:grid-cols-2 gap-8">
-                <div>
-                    <h4 class="font-medium mb-4">Get in Touch</h4>
-                    <div class="space-y-3">
-                        <div>
-                            <span class="text-gray-500 text-sm">Email</span>
-                            <div>ianchristiansabarre@gmail.com</div>
+        <section id="contact" class="py-20 border-t border-gray-200 dark:border-gray-700 section-animate">
+            <h3 class="text-3xl font-bold mb-12 text-center">Let's Connect</h3>
+            <div class="grid sm:grid-cols-2 gap-8 max-w-2xl mx-auto">
+                <div class="space-y-6 hidden-initially stagger-1">
+                    <div class="flex items-center space-x-4 hover-lift p-4 rounded-lg transition-all duration-300">
+                        <div class="w-12 h-12 bg-blue-50 dark:bg-blue-900/30 rounded-lg flex items-center justify-center">
+                            <span class="text-blue-600 dark:text-blue-400">📧</span>
                         </div>
                         <div>
-                            <span class="text-gray-500 text-sm">Phone</span>
-                            <div>+63 09083532956</div>
+                            <p class="text-sm text-gray-500">Email</p>
+                            <p class="font-medium">ianchristiansabarre@gmail.com</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center space-x-4 hover-lift p-4 rounded-lg transition-all duration-300">
+                        <div class="w-12 h-12 bg-green-50 dark:bg-green-900/30 rounded-lg flex items-center justify-center">
+                            <span class="text-green-600 dark:text-green-400">📱</span>
                         </div>
                         <div>
-                            <span class="text-gray-500 text-sm">Location</span>
-                            <div>Manila, Philippines</div>
+                            <p class="text-sm text-gray-500">Phone</p>
+                            <p class="font-medium">+63 09083532956</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center space-x-4 hover-lift p-4 rounded-lg transition-all duration-300">
+                        <div class="w-12 h-12 bg-purple-50 dark:bg-purple-900/30 rounded-lg flex items-center justify-center">
+                            <span class="text-purple-600 dark:text-purple-400">📍</span>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-500">Location</p>
+                            <p class="font-medium">Manila, Philippines</p>
                         </div>
                     </div>
                 </div>
-                <div>
-                    <h4 class="font-medium mb-4">Links</h4>
-                    <div class="space-y-2">
-                        <a href="#" class="block text-primary hover:underline">GitHub</a>
-                        <a href="#" class="block text-primary hover:underline">LinkedIn</a>
-                        <a href="#" class="block text-primary hover:underline">Instagram</a>
-                    </div>
+                
+                <div class="space-y-4 hidden-initially stagger-2">
+                    <h4 class="font-semibold mb-4">Social Links</h4>
+                    <a href="#" class="flex items-center space-x-3 text-gray-600 dark:text-gray-400 hover:text-primary transition-all duration-300 hover:translate-x-2">
+                        <span>🐙</span>
+                        <span>GitHub</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 text-gray-600 dark:text-gray-400 hover:text-primary transition-all duration-300 hover:translate-x-2">
+                        <span>💼</span>
+                        <span>LinkedIn</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 text-gray-600 dark:text-gray-400 hover:text-primary transition-all duration-300 hover:translate-x-2">
+                        <span>📸</span>
+                        <span>Instagram</span>
+                    </a>
                 </div>
             </div>
         </section>
     </main>
 
     <!-- Footer -->
-    <footer class="max-w-4xl mx-auto px-6 py-8 border-t border-gray-200 dark:border-gray-700 text-center text-gray-500 text-sm">
-        <p>&copy; 2025 Christian Sabarre. All rights reserved.</p>
+    <footer class="max-w-4xl mx-auto px-6 py-12 border-t border-gray-200 dark:border-gray-700 text-center text-gray-500 text-sm section-animate">
+        <p class="hidden-initially">&copy; 2025 Christian Sabarre. Crafted with passion and data.</p>
     </footer>
 
     <script>
+        // Opening animation sequence
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                const csText = document.getElementById('cs-text');
+                const fullName = document.getElementById('full-name');
+                
+                // After CS appears, hide it and show full name
+                setTimeout(() => {
+                    csText.style.display = 'none';
+                    fullName.style.display = 'block';
+                }, 1500);
+                
+                // Hide overlay and show main content
+                setTimeout(() => {
+                    const overlay = document.getElementById('opening-overlay');
+                    overlay.style.opacity = '0';
+                    
+                    setTimeout(() => {
+                        overlay.style.display = 'none';
+                        showMainContent();
+                    }, 500);
+                }, 3000);
+            }, 500);
+        });
+        
+        function showMainContent() {
+            // Show header first
+            const header = document.querySelector('header');
+            header.classList.remove('hidden-initially');
+            header.classList.add('animate-slide-down');
+            
+            // Then animate hero elements one by one
+            const heroElements = document.querySelectorAll('.hidden-initially');
+            heroElements.forEach((el, index) => {
+                setTimeout(() => {
+                    el.classList.remove('hidden-initially');
+                    el.classList.add('animate-slide-up');
+                }, index * 200);
+            });
+            
+            // Setup scroll animations
+            setupScrollAnimations();
+        }
+        
+        function setupScrollAnimations() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('in-view');
+                        
+                        // Animate child elements with stagger
+                        const hiddenElements = entry.target.querySelectorAll('.hidden-initially');
+                        hiddenElements.forEach((el, index) => {
+                            setTimeout(() => {
+                                el.classList.remove('hidden-initially');
+                                el.classList.add('animate-slide-up');
+                            }, index * 100);
+                        });
+                    }
+                });
+            }, observerOptions);
+            
+            document.querySelectorAll('.section-animate').forEach(section => {
+                observer.observe(section);
+            });
+        }
+        
+        // Dark mode toggle
         document.addEventListener('DOMContentLoaded', () => {
             const html = document.documentElement;
             const darkModeToggle = document.getElementById('dark-mode-toggle');
