@@ -65,10 +65,16 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 block: 'start'
             });
             // Close mobile menu if open
-            mobileMenu.classList.add('hidden');
-            const icon = mobileMenuBtn.querySelector('i');
-            icon.classList.add('fa-bars');
-            icon.classList.remove('fa-times');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            if (mobileMenu && mobileMenuBtn) {
+                mobileMenu.classList.add('hidden');
+                const icon = mobileMenuBtn.querySelector('i');
+                if (icon) {
+                    icon.classList.add('fa-bars');
+                    icon.classList.remove('fa-times');
+                }
+            }
         }
     });
 });
@@ -132,45 +138,42 @@ document.querySelectorAll('.animate-fade-in-up, .animate-fade-in-down').forEach(
     observer.observe(el);
 });
 
-// Contact Form Handling
+// Contact Form Handling (guarded if no form exists)
 const contactForm = document.querySelector('#contact form');
-contactForm.addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    // Get form data
-    const formData = new FormData(this);
-    const name = formData.get('name');
-    const email = formData.get('email');
-    const subject = formData.get('subject');
-    
-    // Basic validation
-    if (!name || !email || !subject) {
-        showNotification('Please fill in all required fields.', 'error');
-        return;
-    }
-    
-    // Email validation
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-        showNotification('Please enter a valid email address.', 'error');
-        return;
-    }
-    
-    // Simulate form submission
-    const submitBtn = this.querySelector('button[type="submit"]');
-    const originalText = submitBtn.innerHTML;
-    
-    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Sending...';
-    submitBtn.disabled = true;
-    
-    // Simulate API call
-    setTimeout(() => {
-        showNotification('Thank you! Your message has been sent successfully.', 'success');
-        this.reset();
-        submitBtn.innerHTML = originalText;
-        submitBtn.disabled = false;
-    }, 2000);
-});
+if (contactForm) {
+    contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const formData = new FormData(this);
+        const name = formData.get('name');
+        const email = formData.get('email');
+        const subject = formData.get('subject');
+        
+        if (!name || !email || !subject) {
+            showNotification('Please fill in all required fields.', 'error');
+            return;
+        }
+        
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            showNotification('Please enter a valid email address.', 'error');
+            return;
+        }
+        
+        const submitBtn = this.querySelector('button[type="submit"]');
+        const originalText = submitBtn.innerHTML;
+        
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Sending...';
+        submitBtn.disabled = true;
+        
+        setTimeout(() => {
+            showNotification('Thank you! Your message has been sent successfully.', 'success');
+            this.reset();
+            submitBtn.innerHTML = originalText;
+            submitBtn.disabled = false;
+        }, 2000);
+    });
+}
 
 // Notification System
 function showNotification(message, type = 'info') {
@@ -299,6 +302,90 @@ document.querySelectorAll('#projects .group').forEach(card => {
     
     card.addEventListener('mouseleave', function() {
         this.style.transform = 'translateY(0) scale(1)';
+    });
+});
+
+// Power BI PDF upload/view for MCU project
+document.addEventListener('DOMContentLoaded', () => {
+    const fileInput = document.getElementById('mcu-pdf-file');
+    const viewBtn = document.getElementById('mcu-pdf-view-btn');
+    const downloadLink = document.getElementById('mcu-pdf-download');
+    const modal = document.getElementById('pdf-modal');
+    const modalClose = document.getElementById('pdf-modal-close');
+    const pdfViewer = document.getElementById('pdf-viewer');
+
+    let currentPdfUrl = null;
+
+    function openModal() {
+        if (!modal) return;
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+        if (!modal) return;
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+        document.body.style.overflow = '';
+        if (pdfViewer) pdfViewer.src = '';
+    }
+
+    function cleanupUrl() {
+        if (currentPdfUrl) {
+            URL.revokeObjectURL(currentPdfUrl);
+            currentPdfUrl = null;
+        }
+    }
+
+    if (fileInput && viewBtn && downloadLink) {
+        fileInput.addEventListener('change', () => {
+            cleanupUrl();
+            const file = fileInput.files && fileInput.files[0];
+            if (file && file.type === 'application/pdf') {
+                currentPdfUrl = URL.createObjectURL(file);
+                viewBtn.disabled = false;
+                downloadLink.href = currentPdfUrl;
+                downloadLink.classList.remove('hidden');
+            } else {
+                viewBtn.disabled = true;
+                downloadLink.href = '#';
+                downloadLink.classList.add('hidden');
+                if (file) {
+                    showNotification('Please select a valid PDF file.', 'error');
+                }
+            }
+        });
+
+        viewBtn.addEventListener('click', () => {
+            if (!currentPdfUrl) return;
+            if (pdfViewer) pdfViewer.src = currentPdfUrl;
+            openModal();
+        });
+    }
+
+    if (modalClose) {
+        modalClose.addEventListener('click', () => {
+            closeModal();
+        });
+    }
+
+    if (modal) {
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+    }
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            closeModal();
+        }
+    });
+
+    window.addEventListener('beforeunload', () => {
+        cleanupUrl();
     });
 });
 
