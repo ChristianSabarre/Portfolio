@@ -305,16 +305,12 @@ document.querySelectorAll('#projects .group').forEach(card => {
     });
 });
 
-// Power BI PDF upload/view for MCU project
+// Power BI PDF view for MCU project (static file)
 document.addEventListener('DOMContentLoaded', () => {
-    const fileInput = document.getElementById('mcu-pdf-file');
     const viewBtn = document.getElementById('mcu-pdf-view-btn');
-    const downloadLink = document.getElementById('mcu-pdf-download');
     const modal = document.getElementById('pdf-modal');
     const modalClose = document.getElementById('pdf-modal-close');
     const pdfViewer = document.getElementById('pdf-viewer');
-
-    let currentPdfUrl = null;
 
     function openModal() {
         if (!modal) return;
@@ -331,36 +327,13 @@ document.addEventListener('DOMContentLoaded', () => {
         if (pdfViewer) pdfViewer.src = '';
     }
 
-    function cleanupUrl() {
-        if (currentPdfUrl) {
-            URL.revokeObjectURL(currentPdfUrl);
-            currentPdfUrl = null;
-        }
-    }
-
-    if (fileInput && viewBtn && downloadLink) {
-        fileInput.addEventListener('change', () => {
-            cleanupUrl();
-            const file = fileInput.files && fileInput.files[0];
-            if (file && file.type === 'application/pdf') {
-                currentPdfUrl = URL.createObjectURL(file);
-                viewBtn.disabled = false;
-                downloadLink.href = currentPdfUrl;
-                downloadLink.classList.remove('hidden');
-            } else {
-                viewBtn.disabled = true;
-                downloadLink.href = '#';
-                downloadLink.classList.add('hidden');
-                if (file) {
-                    showNotification('Please select a valid PDF file.', 'error');
-                }
-            }
-        });
-
+    if (viewBtn) {
         viewBtn.addEventListener('click', () => {
-            if (!currentPdfUrl) return;
-            if (pdfViewer) pdfViewer.src = currentPdfUrl;
-            openModal();
+            const src = viewBtn.getAttribute('data-pdf-src');
+            if (src && pdfViewer) {
+                pdfViewer.src = src;
+                openModal();
+            }
         });
     }
 
@@ -382,10 +355,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.key === 'Escape') {
             closeModal();
         }
-    });
-
-    window.addEventListener('beforeunload', () => {
-        cleanupUrl();
     });
 });
 
